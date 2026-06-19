@@ -1,73 +1,79 @@
-# Gestionnaire de Notes — Examen TP Mobile 2025/2026
+# Gestionnaire de Notes
 
-Application Android (Java) de gestion de notes personnelles, développée selon le sujet d'examen.
-Le code source est entièrement en français : noms de classes, de méthodes, de variables, de fichiers
-et de dossiers personnalisés, afin d'être compréhensible par n'importe quel lecteur francophone.
+Ce projet a été réalisé dans le cadre de l'examen de TP Mobile 2025/2026. Il s'agit d'une application Android développée en Java permettant à un utilisateur de créer, consulter et organiser ses notes personnelles directement depuis son téléphone.
 
-## Fonctionnalités implémentées
+L'objectif principal était de mettre en pratique les notions étudiées en développement Android, notamment la gestion des interfaces, la navigation entre activités, l'utilisation d'une base de données SQLite et la manipulation des composants Android.
 
-- Création d'une note avec titre, contenu et couleur
-- Consultation de toutes les notes enregistrées
-- Modification d'une note (formulaire pré-rempli)
-- Gestion des favoris par double clic sur une note
-- Recherche d'une note par titre
-- Filtre Favoris
-- Persistance locale avec SQLite (les notes restent après fermeture/redémarrage)
-- Vérification qu'une note vide ne peut pas être enregistrée
+## Fonctionnalités réalisées
 
-## Fonctionnalités bonus ajoutées
+L'application permet de :
 
-- Suppression d'une note (icône dans l'écran de modification, avec confirmation)
-- Tri des notes (plus récentes / titre A-Z)
-- Compteur de notes
-- Mode sombre (persisté, accessible via l'icône lune)
-- Partage d'une note (icône dans l'écran de modification)
-- Possibilité de changer la couleur d'une note même après sa création (icône palette)
+* Créer une nouvelle note en renseignant un titre, un contenu et une couleur ;
+* Consulter la liste de toutes les notes enregistrées ;
+* Modifier une note existante ;
+* Ajouter ou retirer une note des favoris à l'aide d'un double clic ;
+* Rechercher une note à partir de son titre ;
+* Afficher uniquement les notes favorites ;
+* Conserver les données grâce à une base SQLite locale ;
+* Empêcher l'enregistrement d'une note vide.
 
-## Organisation du code (entièrement en français)
+## Fonctionnalités supplémentaires
 
-Package racine : `com.tpmobile.gestionnairenotes`
+En plus des fonctionnalités demandées dans le sujet, plusieurs améliorations ont été ajoutées :
 
-- `modele/Note.java` : la classe représentant une note
-- `donnees/GestionnaireBaseDeDonnees.java` : toutes les opérations de lecture/écriture SQLite
-- `adaptateur/AdaptateurNotes.java` : l'affichage de la liste des notes (RecyclerView)
-- `utilitaire/PaletteCouleurs.java` : la palette de couleurs imposée par le sujet, centralisée
-- `ActivitePrincipale.java` : l'écran liste des notes
-- `ActiviteFormulaireNote.java` : l'écran de création/modification d'une note
-- `ApplicationNotes.java` : initialisation du mode sombre au démarrage
+* Suppression d'une note avec confirmation ;
+* Tri des notes par date ou par ordre alphabétique ;
+* Affichage du nombre total de notes ;
+* Mode sombre mémorisé automatiquement ;
+* Partage du contenu d'une note ;
+* Modification de la couleur d'une note après sa création.
 
-Les écrans (layouts) sont nommés `ecran_liste_notes.xml`, `ecran_formulaire_note.xml`,
-`element_note.xml` et `dialogue_choix_couleur.xml`. Les couleurs sont dans `couleurs.xml`
-et les textes dans `textes.xml`.
+## Organisation du projet
 
-### Une précision importante sur les dossiers
+Le projet est structuré de manière à séparer les différentes responsabilités de l'application :
 
-Les dossiers `res`, `layout`, `drawable`, `values`, `mipmap` et `java` sont des noms imposés
-par le système de compilation Android (Gradle) : ils ne peuvent pas être renommés sans casser
-le projet, ce ne sont pas du "code" à proprement parler mais des conventions techniques
-obligatoires, identiques dans absolument tous les projets Android du monde, quelle que soit
-la langue du développeur. Tout ce qui est personnalisable (le package, les classes, les noms
-de fichiers à l'intérieur de ces dossiers, les identifiants) a été traduit en français.
+* Le package `modele` contient les classes représentant les données ;
+* Le package `donnees` regroupe les opérations liées à SQLite ;
+* Le package `adaptateur` gère l'affichage des notes dans le RecyclerView ;
+* Le package `utilitaire` contient les classes utilitaires utilisées dans l'application.
 
-## Comment ouvrir le projet
+Les principales activités sont :
 
-1. Ouvrir Android Studio
-2. `File > Open`, puis sélectionner le dossier `GestionnaireNotes`
-3. Si Android Studio signale que le wrapper Gradle est manquant, choisir "Use Gradle from local installation" ou laisser l'IDE le régénérer automatiquement, puis cliquer sur "Sync Now"
-4. Lancer l'application sur un émulateur ou un téléphone
+* `ActivitePrincipale` : affichage de la liste des notes ;
+* `ActiviteFormulaireNote` : création et modification des notes ;
+* `ApplicationNotes` : configuration générale de l'application.
 
-## Comment déposer le projet sur GitHub
+## À propos des noms de fichiers
 
-Dans le dossier du projet, ouvrir un terminal et exécuter :
+Les classes, méthodes, variables et fichiers créés pour ce projet ont été nommés en français afin de rendre le code plus accessible et plus facile à comprendre.
 
-```
+Certains dossiers tels que `java`, `res`, `layout`, `drawable`, `values` ou encore `mipmap` conservent toutefois leur nom d'origine, car ils font partie de l'architecture standard imposée par Android Studio et le système de compilation Android.
+
+## Exécution du projet
+
+Pour ouvrir le projet :
+
+1. Lancer Android Studio ;
+2. Choisir **File > Open** ;
+3. Sélectionner le dossier du projet ;
+4. Attendre la synchronisation Gradle ;
+5. Exécuter l'application sur un émulateur ou un appareil Android.
+
+## Dépôt GitHub
+
+Pour publier le projet sur GitHub :
+
+```bash
 git init
 git add .
 git commit -m "Examen TP Mobile - Gestionnaire de Notes"
 git branch -M main
-git remote add origin LIEN_DE_TON_DEPOT_GITHUB
+git remote add origin LIEN_DU_DEPOT
 git push -u origin main
 ```
 
-Ensuite, envoyer le lien du dépôt par mail à l'enseignant responsable avec pour objet :
-`Rendue Examen TP Intro Android 2026`
+Une fois le dépôt créé, il suffit de transmettre le lien GitHub à l'enseignant conformément aux consignes de l'examen.
+
+## Conclusion
+
+Ce projet a permis de mettre en pratique les concepts fondamentaux du développement Android en Java, notamment la gestion des activités, l'utilisation de SQLite, la persistance des données et la conception d'interfaces utilisateur. Les fonctionnalités supplémentaires ajoutées ont également permis d'améliorer l'expérience utilisateur et d'approfondir la maîtrise des outils Android.
